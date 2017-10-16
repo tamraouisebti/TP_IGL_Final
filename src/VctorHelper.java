@@ -37,11 +37,7 @@ public class VctorHelper {                                   /* La classe repres
         System.out.println();
         for (i=0;i<vlength;i++){System.out.print("|"+vecteur[i]+"|");}
     }
-
-
-
-
-    public void triVec(){         /* Tri Par Bull */
+    public void triervect(){
 
 
         int i,k,m;
@@ -58,6 +54,67 @@ public class VctorHelper {                                   /* La classe repres
 
 
     }
+
+    public int max ()   /* .........la fonction qui va définir le max........*/
+    {
+        triervect();       /*.....appele de la fonction de tri....*/
+        return vecteur[vlength];
+    }
+
+    public int min ( )     /*.....la fonction qui définie le min....*/
+    {
+        triervect();
+        return vecteur[0];
+    }
+
+    void vect_formule() /* cet methode permet d'effectuer des oppérations sur le vecteur */
+    {
+        System.out.println(" Entrez l'operation que vous voulez effectuer sur votre vecteur : "); /* l'operation choisis */
+
+        System.out.println(" --> Pour l'addition tapez ' 1 ' ");
+        System.out.println("   --> pour la multuplication tapez ' 2 ' ");
+        System.out.println("     --> Pour la division tapez ' 3 ' ");
+        System.out.println("       --> Pour soustraction tapez ' 4 ' ");
+        Scanner sc = new Scanner(System.in);
+        int choix = sc.nextInt();
+        System.out.println(" Entrer votre nombre : "); /* le nombre avec  le quel on fais l'operation*/
+        Scanner sc1 = new Scanner(System.in);
+        int nombre = sc1.nextInt();
+
+        switch (choix) {
+            case 1: /* l'opperation d'adition*/
+
+                for (int i= 0; i < vlength; i++) {
+                    vecteur[i] = vecteur[i] + nombre;
+
+                }break;
+            case 2:// l'operation de multiplication
+
+                for (int i = 0;i < vecteur.length;i++) {
+                    vecteur[i]=vecteur[i]*nombre;
+
+                }break;
+
+            case 3: // l'operation de division ou on genere un exeption si le nombre = 0
+                try {
+                    for (int i = 0; i < vecteur.length; i++) {
+                        vecteur[i] = vecteur[i]/nombre;
+                    }
+                } catch (ArithmeticException e) {
+                    System.out.println("ERREUR !!!!!!! Devision par zero");
+                }break;
+            case 4: // l'operation de soustraction
+
+                for (int i = 0; i < vecteur.length; i++) {
+                    vecteur[i] = vecteur[i]-nombre;
+                }break;
+
+        }
+
+
+    }
+
+
 
 
     public VctorHelper SomVEC(VctorHelper V1)
