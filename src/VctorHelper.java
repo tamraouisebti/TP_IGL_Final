@@ -40,4 +40,60 @@ public class VctorHelper {                                   /* La classe repres
 
 
 
+
+    public void triVec(){         /* Tri Par Bull */
+
+
+        int i,k,m;
+
+        for(i=0;i<vlength;i++){
+            for(k=vlength-1;k>i;k--){
+                if (vecteur[k]<vecteur[k-1]){
+                    m=vecteur[k];
+                    vecteur[k]=vecteur[k-1];
+                    vecteur[k-1]=m;
+                }
+            }
+        }
+
+
+    }
+
+
+    public VctorHelper SomVEC(VctorHelper V1)
+    {                                                      /* Sommer les Colonne de deux Vecteur Et renvoi le Resultat dans un nouveau Vecteur */
+        if(this.vlength!=V1.getVlength())
+        {
+            System.out.println("Les Vecteurs N'ont pas la meme Taille");           /* Renvoi un message en cas des Vecteur avec de taille deferente  */
+            return null;
+        }
+
+        else {                                                                      /* Effectuer la Somme Des Vecteurs  */
+            VctorHelper resultat = new VctorHelper();
+            int Vresult[]=new int[vlength];
+            int i=0;
+            for(i=0;i<vlength;i++){Vresult[i]=this.vecteur[i]+V1.getcase(i);}
+            resultat.setVecteur(Vresult);
+            resultat.setVlength(vlength);
+
+            return resultat;
+        }
+    }
+
+
+
+
+    public void invVEC() {                                       /* Inverser Les elements Du Vecteur */
+        int i=vlength/2;
+
+        int k,m;
+        for(k=0;k<i;k++){
+
+            m=vecteur[k];
+            vecteur[k]=vecteur[vlength-1-k];
+            vecteur[vlength-1-k]=m;
+        }
+    }
+
+
 }
