@@ -37,7 +37,79 @@ public class VctorHelper {                                   /* La classe repres
         System.out.println();
         for (i=0;i<vlength;i++){System.out.print("|"+vecteur[i]+"|");}
     }
+    public void triervect(){
 
 
+        int i,k,m;
 
+        for(i=0;i<vlength;i++){
+            for(k=vlength-1;k>i;k--){
+                if (vecteur[k]<vecteur[k-1]){
+                    m=vecteur[k];
+                    vecteur[k]=vecteur[k-1];
+                    vecteur[k-1]=m;
+                }
+            }
+        }
+
+
+    }
+
+    public int max ()   /* .........la fonction qui va définir le max........*/
+    {
+        triervect();       /*.....appele de la fonction de tri....*/
+        return vecteur[vlength];
+    }
+
+    public int min ( )     /*.....la fonction qui définie le min....*/
+    {
+        triervect();
+        return vecteur[0];
+    }
+
+    void vect_formule() {
+        System.out.println(" Entrez l'operation que vous voulez effectuer sur votre vecteur : ");
+
+        System.out.println(" --> Pour l'addition tapez ' 1 ' ");
+        System.out.println("   --> pour la multuplication tapez ' 2 ' ");
+        System.out.println("     --> Pour la division tapez ' 3 ' ");
+        System.out.println("       --> Pour soustraction tapez ' 4 ' ");
+        Scanner sc = new Scanner(System.in);
+        int choix = sc.nextInt();
+        System.out.println(" Entrer votre nombre : ");
+        Scanner sc1 = new Scanner(System.in);
+        int nombre = sc1.nextInt();
+
+        switch (choix) {
+            case 1:
+
+                for (int i= 0; i < vlength; i++) {
+                    vecteur[i] = vecteur[i] + nombre;
+
+                }break;
+            case 2:
+
+                for (int i = 0;i < vecteur.length;i++) {
+                    vecteur[i]=vecteur[i]*nombre;
+
+                }break;
+
+            case 3:
+                try {
+                    for (int i = 0; i < vecteur.length; i++) {
+                        vecteur[i] = vecteur[i]/nombre;
+                    }
+                } catch (ArithmeticException e) {
+                    System.out.println("ERREUR !!!!!!! Devision par zero");
+                }break;
+            case 4:
+
+                for (int i = 0; i < vecteur.length; i++) {
+                    vecteur[i] = vecteur[i]-nombre;
+                }break;
+
+        }
+
+
+    }
 }
